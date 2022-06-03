@@ -1,0 +1,213 @@
+// 背景輪播
+.carousel-photoSet {
+    width: 100%;
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50%;
+
+    @include pad {
+        position: fixed;
+    }
+}
+
+.carousel-img-1 {
+    background-image: url(../img/house/photo-1551516594-56cb78394645.jpeg);
+}
+
+.carousel-img-2 {
+    background-image: url(../img/house/photo-1549490148-d7304e934d25.jpeg);
+}
+
+.carousel-img-3 {
+    background-image: url(../img/house/photo-1523217582562-09d0def993a6.jpeg);
+}
+
+.carousel-img-4 {
+    background-image: url(../img/house/photo-1507149833265-60c372daea22.jpeg);
+}
+
+.carousel-indicators {
+    position: fixed;
+}
+
+.carousel-indicators [data-bs-target] {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border-top: none;
+    border-bottom: none;
+}
+
+.btn-check:focus + .btn,
+.btn:focus {
+    box-shadow: none;
+}
+
+// 內容開始處
+.homePage {
+    max-width: 100%;
+    height: 100vh;
+    margin: auto;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+
+    @include lpc {
+        padding: 0 2%;
+        gap: 1%;
+    }
+
+    @include pad {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        bottom: auto;
+        gap: 24px;
+        padding: 24px 0 40px 0;
+        height: auto;
+    }
+}
+
+.homeLogo {
+    height: 550px;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    @include lpc {
+        height: 440px;
+    }
+
+    @include pad {
+        width: 80%;
+        height: 40%;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    h1 a {
+        background-image: url(../img/house/houseIcon.svg);
+        width: 142px;
+        height: 255px;
+        @include hide-text;
+
+        @include pad {
+            width: 85px;
+            height: 153px;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+    }
+
+    .homeContact {
+        font-size: $font-size-ss;
+
+        @include pad {
+            max-width: 100%;
+        }
+    }
+
+    h2 {
+        margin-bottom: 16px;
+    }
+
+    p {
+        line-height: 1.5;
+    }
+}
+
+.roomStyle {
+    width: 825px;
+    height: 100%;
+    display: flex;
+    align-content: center;
+    flex-wrap: wrap;
+
+    @include lpc {
+        max-width: 100%;
+        justify-content: center;
+    }
+
+    @include pad {
+        align-content: flex-start;
+    }
+
+    .roomStyle_content {
+        background: no-repeat center / cover;
+        width: 275px;
+        height: 275px;
+        text-decoration: none;
+
+        @include lpc {
+            width: 220px;
+            height: 220px;
+        }
+
+        @include mobile {
+            width: 275px;
+            height: 275px;
+        }
+
+        a {
+            text-decoration: none;
+            display: none;
+
+            @include lpc {
+                display: block;
+                font-family: $font-family-eng;
+                width: 220px;
+                height: 220px;
+                color: $colors-secondary;
+                font-size: $font-size-lg;
+                background-color: rgba(255, 255, 255, 0.2);
+                text-align: center;
+                padding: 47% 0;
+            }
+
+            @include mobile {
+                width: 275px;
+                height: 275px;
+            }
+        }
+
+        &:hover {
+            a {
+                display: block;
+                font-family: $font-family-eng;
+                width: 275px;
+                height: 275px;
+                color: #fff;
+                font-size: $font-size-lg;
+                background-color: $colors-primary-alpha-02;
+                text-align: center;
+                padding: 47% 0;
+            }
+
+            @include lpc {
+                a {
+                    width: 220px;
+                    height: 220px;
+                    color: $colors-secondary;
+                    background-color: rgba(255, 255, 255, 0.2);
+                }
+            }
+
+            @include mobile {
+                a {
+                    width: 275px;
+                    height: 275px;
+                }
+            }
+        }
+    }
+}

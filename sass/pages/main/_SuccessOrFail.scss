@@ -1,0 +1,40 @@
+.bookingView {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.bookingViewPage {
+    width: 1110px;
+    height: 600px;
+    background: $colors-primary;
+    text-align: center;
+    color: #fff;
+    padding: 10%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    z-index: 3;
+
+    .bookingIcon-icon {
+        width: 125px;
+        margin-bottom: 55px;
+    }
+
+    p {
+        font-size: 48px;
+        margin-bottom: 40px;
+    }
+
+    span {
+        font-size: $font-size-lg;
+        font-weight: 200;
+    }
+}

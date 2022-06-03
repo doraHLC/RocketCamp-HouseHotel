@@ -1,0 +1,197 @@
+// bookingPage
+.bookingBox {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.bookingWrap {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+}
+
+.bookingPage {
+    width: 1110px;
+    border: 2px solid $colors-primary;
+    display: flex;
+}
+
+.booking-box {
+    width: 40%;
+    background: $colors-primary;
+    color: #fff;
+    font-size: $font-size-sm;
+    padding: 3% 5%;
+
+    .booking-label {
+        margin-bottom: 16px;
+        width: 100%;
+
+        .booking-title {
+            margin-bottom: 8px;
+        }
+
+        .booking-input {
+            width: 100%;
+            height: 38px;
+        }
+    }
+
+    .booking-days {
+        color: $colors-secondary;
+        padding-bottom: 14px;
+        border-bottom: 1px solid $colors-secondary;
+        margin-bottom: 16px;
+    }
+
+    .booking-total {
+        text-align: right;
+        margin-bottom: 24px;
+
+        span {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        p {
+            font-size: $h4-font-size;
+            font-weight: 800;
+            font-family: $font-family-num;
+        }
+    }
+
+    .booking-btn {
+        width: 100%;
+        padding: 16px 0;
+        font-size: $font-size-lg;
+        font-weight: 500;
+        background: $colors-secondary;
+        color: #fff;
+        border: none;
+        margin-bottom: 20px;
+
+        &:hover {
+            background: #ebe1a9;
+            color: #000;
+        }
+    }
+
+    .booking-memo {
+        display: block;
+        font-size: $font-size-ss;
+        text-align: center;
+    }
+}
+
+.resInformation {
+    width: 60%;
+    padding: 3% 5%;
+    position: relative;
+    color: $colors-primary;
+    background-color: #fff;
+
+    p {
+        font-size: $font-size-sm;
+        line-height: 1.5;
+    }
+}
+
+.resInformation-title {
+    display: flex;
+    justify-self: center;
+    align-items: center;
+    gap: 2%;
+    margin-bottom: 16px;
+
+    h2 {
+        font-size: $h4-font-size;
+        font-family: $font-family-eng;
+    }
+
+    h3 {
+        font-weight: 600;
+    }
+}
+
+.resInformation-cencel {
+    width: 12px;
+    position: absolute;
+    right: 30px;
+    top: 30px;
+}
+
+hr {
+    flex-grow: 1;
+    margin: 0;
+    border: none;
+    background-color: $colors-primary-alpha-01;
+    color: $colors-primary-alpha-01;
+    opacity: 1;
+}
+
+.resInformation-icons {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    gap: 30px;
+    font-size: 10px;
+    margin: 30px 0;
+
+    .resInformation-iconGroup {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .things-icon {
+            width: 30px;
+            height: 30px;
+        }
+
+        .things-txt {
+            display: flex;
+            justify-content: center;
+            white-space: nowrap;
+            margin-top: 8px;
+        }
+    }
+}
+
+.resInformation-list {
+    font-size: $font-size-ss;
+    line-height: 2;
+    margin-bottom: 16px;
+}
+
+.resInformation-flow {
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+
+    .flow {
+        width: 160px;
+        height: 134px;
+        border: 1px solid $colors-secondary;
+        border-radius: 0 0 10px 10px;
+
+        .flow-bg {
+            padding: 10px;
+            background: $colors-secondary;
+
+            .flow-icon {
+                width: 30px;
+            }
+        }
+
+        p {
+            padding: 12px 8px;
+            font-size: $font-size-ss;
+        }
+    }
+}
