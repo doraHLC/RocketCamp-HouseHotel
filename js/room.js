@@ -43,6 +43,8 @@ const infoTxt = document.querySelector('.js-infoTxt');
 const resInformationIcons = document.querySelector('.resInformation-icons');
 const resInformationList = document.querySelector('.js-resInformationList');
 
+const carouselInner = document.querySelector('.carousel-inner');
+
 let roomCheckedDate = [];
 
 function init() {
@@ -114,10 +116,6 @@ const newAmenities = [
     }
 ]
 
-let normalDayPrice = JSON.parse(localStorage.getItem('normalDayPrice'));
-let holidayPrice = JSON.parse(localStorage.getItem('holidayPrice'));
-const carouselInner = document.querySelector('.carousel-inner');
-
 function getRoomsType() {
     axios.get(`${apiUrl}/room/${id}`, axiosConfig)
         .then(res => {
@@ -127,6 +125,9 @@ function getRoomsType() {
             let newResInformationStr = '';
 
             roomstyleData.forEach(item => {
+                localStorage.setItem('normalDayPrice', JSON.stringify(item.normalDayPrice));
+                localStorage.setItem('holidayPrice', JSON.stringify(item.holidayPrice));
+
                 let bedType = item.descriptionShort.Bed.toString();
                 switch (bedType) {
                     case "Single":
@@ -149,7 +150,6 @@ function getRoomsType() {
                         break;
                 }
 
-
                 carouselInner.innerHTML = `
                 <div class="carousel-item active">
                     <div class="carousel-sr-photoSet" style="background-image: url(${item.imageUrl[0]});"></div>
@@ -160,9 +160,6 @@ function getRoomsType() {
                 <div class="carousel-item">
                     <div class="carousel-sr-photoSet" style="background-image: url(${item.imageUrl[2]});"></div>
                 </div>`
-
-                localStorage.setItem('normalDayPrice', JSON.stringify(item.normalDayPrice));
-                localStorage.setItem('holidayPrice', JSON.stringify(item.holidayPrice));
 
                 priceOneNight.textContent = `${item.normalDayPrice}`;
 
@@ -178,13 +175,11 @@ function getRoomsType() {
                 typeThings.pop();
 
                 let roomThings = '';
-                typeThings.forEach(item => {
-                    roomThings += `<li>・${item}.</li>`
+                typeThings.forEach(thingItem => {
+                    roomThings += `<li>・${thingItem}.</li>`
                 })
 
                 roomTypeThings.innerHTML = roomThings;
-
-                // roomTypeThings.innerHTML = `<p>${item.description}</p>`
 
                 // booking page
                 resInformationTitle.innerHTML = `<h2>${item.name}</h2><hr>`
@@ -239,6 +234,8 @@ function getRoomsType() {
 
 console.log(roomCheckedDate);
 
+// let normalDayPrice = JSON.parse(localStorage.getItem('normalDayPrice'));
+// let holidayPrice = JSON.parse(localStorage.getItem('holidayPrice'));
 
 
 //datapicker 套件
@@ -278,7 +275,6 @@ const initRangePicker = () => {
             localStorage.setItem('startTimeInfo', JSON.stringify(startDay));
             localStorage.setItem('endTimeInfo', JSON.stringify(endDay));
             localStorage.setItem('totalNightInfo', JSON.stringify(totalNight));
-
 
             let newStartDay = new Date(startDay);
             let newEndDay = new Date(endDay);
@@ -324,8 +320,16 @@ const initRangePicker = () => {
             localStorage.setItem('weekendTotalInfo', JSON.stringify(weekendTotal));
             localStorage.setItem('weekdayTotalInfo', JSON.stringify(weekdayTotal));
 
-            priceOneNight.textContent = (normalDayPrice * (weekdayTotal)) + (holidayPrice * (weekendTotal));
-            localStorage.setItem('priceNightInfo', JSON.stringify(priceOneNight.textContent));
+            let normalDayPrice = JSON.parse(localStorage.getItem('normalDayPrice'));
+            let holidayPrice = JSON.parse(localStorage.getItem('holidayPrice'));
+
+
+            // let priceOneNightData = priceOneNight.textContent;
+
+            let priceOneNightData = (normalDayPrice * (weekdayTotal)) + (holidayPrice * (weekendTotal));
+            priceOneNight.textContent = priceOneNightData;
+
+            localStorage.setItem('priceNightInfo', JSON.stringify(priceOneNightData));
 
             totalNightPage.textContent = `${totalNight}晚`;
 
@@ -362,12 +366,12 @@ groupgBtn.addEventListener('click', btnPicker);
 function btnPicker() {
     let weekendTotalDays = JSON.parse(localStorage.getItem('weekendTotalInfo'));
     let weekdayTotalDays = JSON.parse(localStorage.getItem('weekdayTotalInfo'));
-
-    bookingBox.setAttribute("style", "display:block;");
-
     let startPicker = JSON.parse(localStorage.getItem('startTimeInfo'));
     let endPicker = JSON.parse(localStorage.getItem('endTimeInfo'));
     let allNightDays = JSON.parse(localStorage.getItem('totalNightInfo'));
+    let priceNight = JSON.parse(localStorage.getItem('priceNightInfo'));
+
+    bookingBox.setAttribute("style", "display:block;");
 
     let totalDays = allNightDays + 1;
 
@@ -375,7 +379,6 @@ function btnPicker() {
     endtTime.value = endPicker;
     bookingDays.textContent = `${totalDays} 天，${allNightDays} 晚 (含 ${weekdayTotalDays} 晚平日，${weekendTotalDays} 晚假日)`;
 
-    let priceNight = JSON.parse(localStorage.getItem('priceNightInfo'));
     totalPrice.textContent = `$ ${priceNight} 元`;
 }
 
